@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dietary restaurant finder</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <header>
+      <h1>Dietary restaurant finder</h1>
+      <p>Pick your dietary restrictions and find nearby places that cater for them.</p>
+    </header>
+
+    <main>
+      <form id="search-form">
+        <fieldset>
+          <legend>Dietary restrictions</legend>
+          <div id="restriction-list" class="restriction-list"></div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Location</legend>
+          <div class="location-row">
+            <button type="button" id="use-location">Use my location</button>
+            <span class="or">or</span>
+            <label class="visually-hidden" for="place">Town, address or postcode</label>
+            <input type="text" id="place" placeholder="Town, address or postcode">
+          </div>
+          <label for="radius">Search radius</label>
+          <select id="radius">
+            <option value="500">500 m</option>
+            <option value="1000">1 km</option>
+            <option value="2000" selected>2 km</option>
+            <option value="5000">5 km</option>
+          </select>
+        </fieldset>
+
+        <div class="actions">
+          <button type="submit" id="search">Find restaurants</button>
+          <button type="button" id="demo" class="secondary">Try with sample data</button>
+        </div>
+      </form>
+
+      <p id="status" role="status" aria-live="polite"></p>
+
+      <section id="results" hidden>
+        <h2>Meets all your restrictions <span id="full-count" class="count"></span></h2>
+        <ul id="full-list" class="place-list"></ul>
+
+        <h2>Meets some of your restrictions <span id="partial-count" class="count"></span></h2>
+        <ul id="partial-list" class="place-list"></ul>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        Restaurant data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>,
+        via the Overpass API and Nominatim. Dietary info is community-maintained &mdash; always check with the restaurant.
+      </p>
+    </footer>
+
+    <script src="matching.js"></script>
+    <script src="sample-data.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
